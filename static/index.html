@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3ed">
+  <title>Minha Biblioteca</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Minha Biblioteca, início"><span class="brand-mark">M<span>.</span></span><span>minha<br>biblioteca</span></a>
+      <span class="topbar-note">Seu espaço de leitura</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> COLEÇÃO PESSOAL</div>
+          <h1 id="page-title">Histórias para <em>guardar.</em></h1>
+          <p>Um cantinho para organizar seus livros, acompanhar suas leituras e lembrar das histórias que ficaram com você.</p>
+          <button class="primary-button" id="add-button" type="button"><span aria-hidden="true">+</span> Adicionar livro</button>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="shelf"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="art-caption">Cada página,<br>uma nova descoberta.</div></div>
+      </section>
+
+      <section class="stats" aria-label="Resumo da biblioteca">
+        <div class="stat"><span>NA ESTANTE</span><strong id="total-count">0</strong><small>livros cadastrados</small></div>
+        <div class="stat"><span>EM ANDAMENTO</span><strong id="reading-count">0</strong><small>leituras atuais</small></div>
+        <div class="stat"><span>JÁ LIDOS</span><strong id="finished-count">0</strong><small>histórias concluídas</small></div>
+      </section>
+
+      <section class="collection" aria-labelledby="collection-title">
+        <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> SUA ESTANTE</div><h2 id="collection-title">Meus livros</h2></div><p>Uma coleção feita de boas histórias.</p></div>
+        <div class="toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar por título ou autor..." aria-label="Buscar livros"></label><label class="filter-label" for="filter">Mostrar</label><select id="filter" aria-label="Filtrar por estado"><option value="todos">Todos os livros</option><option value="quero-ler">Quero ler</option><option value="lendo">Lendo</option><option value="concluido">Concluídos</option></select></div>
+        <div id="message" class="message" role="status" hidden></div>
+        <div id="book-list" class="book-grid"></div>
+        <div id="empty-state" class="empty-state" hidden><div class="empty-icon" aria-hidden="true">✦</div><h3>Sua estante está esperando</h3><p>Adicione o primeiro livro e comece sua coleção.</p><button class="secondary-button" id="empty-add-button" type="button">Adicionar meu primeiro livro</button></div>
+      </section>
+    </main>
+    <footer>Feito para quem sempre tem uma próxima leitura. <span>✳</span></footer>
+  </div>
+
+  <dialog id="book-dialog" aria-labelledby="dialog-title">
+    <form id="book-form" novalidate>
+      <div class="dialog-top"><div><div class="eyebrow"><span class="eyebrow-line"></span> SUA ESTANTE</div><h2 id="dialog-title">Novo livro</h2></div><button class="icon-button" id="close-dialog" type="button" aria-label="Fechar">×</button></div>
+      <label for="title">Título <span>*</span></label><input id="title" name="title" required maxlength="200" placeholder="Qual é o nome do livro?">
+      <label for="author">Autor(a) <span>*</span></label><input id="author" name="author" required maxlength="200" placeholder="Quem escreveu?">
+      <label for="status">Estado da leitura</label><select id="status" name="status"><option value="quero-ler">Quero ler</option><option value="lendo">Lendo</option><option value="concluido">Concluído</option></select>
+      <div id="rating-field"><label for="rating">Sua nota</label><select id="rating" name="rating"><option value="">Sem nota</option><option value="1">1 estrela</option><option value="2">2 estrelas</option><option value="3">3 estrelas</option><option value="4">4 estrelas</option><option value="5">5 estrelas</option></select></div>
+      <p id="form-error" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="text-button" id="cancel-button" type="button">Cancelar</button><button class="primary-button" id="save-button" type="submit">Salvar livro</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
+
